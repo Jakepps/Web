@@ -1,0 +1,20 @@
+.circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 999px;   
+}
+
+.c1 {
+    background-color: black;
+    border: solid white;
+    top: 40px;
+    left: 40px;
+}
+
+.c2 {
+    background-color: white;
+    border: solid black;
+    top: 80px;
+    left: 80px;
+}

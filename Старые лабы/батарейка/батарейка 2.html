@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta charset="UTF-8">
+  <style>
+    .battery-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20vh;
+      border-radius: 20px;
+    }
+
+    .battery {
+      max-width: 500px;
+      height: 100px;
+      border: 2px solid black;
+      position: relative;
+      border-radius: 20px;
+      transform: scale(-1, -1);
+    
+    }
+
+    .battery-level {
+      width: var(--charge, 100%);
+      height: 100%;
+      background-color: var(--battery-color, green);
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      background-color: #ddd;
+      padding: 0 20px;
+      border-radius: 12px;
+      max-block-size: 3;
+      position:static;
+    }
+
+    .menu button {
+      height: 30px;
+      width: 1000px;
+      background-color: rgb(23, 136, 13);
+      border: 1px solid black;
+      border-radius: 100px;
+      padding: 0 10px;
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+    .menu button:active {
+      box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <button>Новости</button>
+    <button>Погода</button>
+    <button>Пробки</button>
+  </div>
+  <div class="battery-container">
+    <div class="battery">
+      <div class="battery-level"></div>
+    </div>
+  </div>
+</body>
+<script>
+  const batteryLevel = document.querySelector('.battery-level');
+
+  let charge = 450;
+
+  setInterval(() => {
+    charge -= 0.3;
+
+    if (charge < 10) {
+      charge = 450;
+    }
+
+    batteryLevel.style.setProperty('--charge', charge);
+
+    if (charge <= 100) 
+    {
+      batteryLevel.style.setProperty('--battery-color', 'red');
+    } else if (charge <= 300) 
+    {
+      batteryLevel.style.setProperty('--battery-color', 'orange');
+    } 
+    else
+    {
+      batteryLevel.style.setProperty('--battery-color', 'green');
+    }
+  });
+</script>
+</html>

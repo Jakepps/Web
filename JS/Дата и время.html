@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <script>
+            function showDateTime() 
+            {
+            let now = new Date();
+            let dateString = now.toLocaleDateString();
+            let timeString = now.toLocaleTimeString();
+            document.write("Сегодня: " + dateString + " ");
+            document.write("Текущее время: " + timeString);
+            }
+            showDateTime()
+        </script>    
+    </body>
+</html>
