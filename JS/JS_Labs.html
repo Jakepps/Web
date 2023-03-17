@@ -99,8 +99,8 @@
 			let day = now.getDate().toString().padStart(2, '0');
 			let daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 			let day_week = daysOfWeek[now.getDay()];
-			let status_date = `${year}-${day}-${month},${day_week}`;
-			//время с нулями
+			let status_date = `${day_week}, ${year}-${day}-${month}`;
+			//время с нулями	
 			let hours = now.getHours().toString().padStart(2, '0');
 			let minutes = now.getMinutes().toString().padStart(2, '0');
 			let seconds = now.getSeconds().toString().padStart(2, '0');
