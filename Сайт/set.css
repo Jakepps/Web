@@ -1,0 +1,121 @@
+strong{
+    font-weight: bold;
+}
+
+header {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: normal !important;
+    text-align: center;
+    font-size: 24px; 
+    flex-direction: column ;
+    justify-content: space-between;
+    position: relative;
+    font-family: "Arhivo Black";
+    margin: 60px auto 0;
+    line-height: 1.1;
+}
+
+pre-main {
+    padding: 20px;
+    font-size: 16px; 
+    font-weight: normal !important;
+    font-family: "Open Sans", sans-serif;
+    font-style: italic;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    max-block-size: 3;
+    position: static;
+}
+
+.menu button {
+    height: 40px;
+    width: 250px;
+    background-color: #e8233e;
+    color: #ffffff;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 100px;
+    padding: 0 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-image: none; 
+    margin: 20px auto 0
+}
+
+.menu button:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+list_1{
+    min-height: 265px; 
+    grid-template-columns: repeat(3, calc(33.3333% - 15px)); 
+    height: auto;
+    grid-gap: 22px;
+    margin: 41px 0 0;
+}
+
+list_item_1 {
+    background-image: none;
+}
+
+container_layout_1 {
+    padding: 30px;
+}
+
+text_zag {
+    margin-top: 0;
+    margin-bottom: 0; 
+    font-weight: 700;
+}
+
+text_content {
+    margin-left: 0; 
+    margin-bottom: 0;
+}
+
+btnunderline{
+    border-style: none none solid;
+    margin-left: 0; 
+    margin-right: 0; 
+    text-transform: uppercase; 
+    font-size: 0.875rem; 
+    padding: 0
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+textautor{
+    margin: 19px auto 60px;
+    font-family: "Open Sans", sans-serif;
+    color:#000000;
+    font-size: 16px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
