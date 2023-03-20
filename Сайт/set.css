@@ -1,3 +1,4 @@
+
 body{
     position: relative;
     margin: 0%;
@@ -79,6 +80,7 @@ body{
 }
 
 .menu button:active {
+    background-color: #e8233e;
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
@@ -149,8 +151,13 @@ button:hover{
 }
 /*///////////////*/
 
+.contimg{
+    width: 100%;
+}
+
 img {
-    width: 1140px;
+    /* width: 1140px; */
+    width: 60%;
     height: auto;
     display: block;
     margin: auto auto auto auto;
