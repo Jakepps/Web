@@ -1,3 +1,9 @@
+body{
+    position: relative;
+    margin: 0%;
+    display: block;
+}
+
 .header {
     width: 575.11px;
     height: 52.8px;
@@ -12,6 +18,13 @@
     font-family: "Arhivo Black";
     margin: 60px auto 0;
     line-height: 1.1;
+    flex-wrap: wrap;
+}
+
+.contmain{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .pre-main {
@@ -60,6 +73,11 @@
     margin-bottom: 40px;
 }
 
+.menu button:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+
 .menu button:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
@@ -72,6 +90,8 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    margin-left: 15px;
 }
   
 .box {
@@ -130,10 +150,10 @@ button:hover{
 /*///////////////*/
 
 img {
-    max-width: 100%;
+    width: 1140px;
     height: auto;
     display: block;
-    margin: 0 auto; 
+    margin: auto auto auto auto;
 }
 
 .textautor{
@@ -144,19 +164,24 @@ img {
     text-align: center;
 }
 
+.endtxt{
+    color: #fff;
+    width: 417px;
+    height: 67.17px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+    font-family: "Open Sans",sans-serif;
+    margin: 49px auto;
+    margin-bottom: 1px;
+}
+
 footer {
     background-color: #333;
-    color: #fff;
-    text-align: center;
     padding: 10px;
     position: relative;
     bottom: 1;
     width: 100%;
     box-sizing: border-box;
-    font-family: "Open Sans",sans-serif;
-    font-size: 14px;
-    text-align: center;
-    line-height: 1.8;
-    margin-bottom: 1;
-    
 }
