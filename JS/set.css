@@ -51,3 +51,34 @@
 .menu button:active {
       box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
+
+/* календарь */
+#calendar {
+    width: 100%;
+    font: monospace;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#calendar thead tr:nth-child(1) td:nth-child(1):hover, #calendar thead tr:nth-child(1) td:nth-child(3):hover {
+    cursor: pointer;
+}
+
+#calendar thead tr:last-child {
+    font-size: small;
+    color: rgb(85, 85, 85);
+}
+
+#calendar tbody td {
+    color: rgb(44, 86, 122);
+}
+
+#calendar tbody td:nth-child(n+6), #calendar .holiday {
+    color: rgb(231, 140, 92);
+}
+
+#calendar tbody td.today {
+    background: rgb(220, 0, 0);
+    color: #fff;
+}

@@ -18,7 +18,13 @@
 		<div>
 			<button onclick="toggleContent(2)">Лабораторная 2</button>
 			<div class="content" id="content2">
-				<p>Лабораторная 2</p>
+				<table id="calendar">
+					<thead>
+					<tr><td>‹<td colspan="5"><td>›  <!-- ячейка расширяется на 5 стобцов  -->
+					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+					<tbody>
+				</table>
+				
 			</div>
 		</div>
 		<div>
@@ -38,7 +44,8 @@
 				content.style.display = "none";
 			}
 		}
-
+		
+		//Task1
         function showDateTime(){
             let now = new Date();
 			//год с незначащими нулями
@@ -56,7 +63,65 @@
 
 			let content1 = document.getElementById("content1");
 			content1.innerHTML = status_date + ' ' + status_time;
+        }
+
+		//Task2
+		function Сalendar(id, year, month) 
+        {
+            var Dlast = new Date(year,month+1,0).getDate(),
+                D = new Date(year,month,Dlast),
+                DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+                DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+                calendar = '<tr>',
+                month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+            if (DNfirst != 0) 
+            {
+                for(var  i = 1; i < DNfirst; i++) 
+                    calendar += '<td>';
+            } 
+            else {
+                for(var  i = 0; i < 6; i++) 
+                    calendar += '<td>';
             }
+            // определим сегодня
+            for(var  i = 1; i <= Dlast; i++) 
+            {
+                if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                        calendar += '<td class="today">' + i;
+                } else {
+                    calendar += '<td>' + i;
+                }
+                
+                if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+                    calendar += '<tr>';
+                }
+            }
+            
+            for(var  i = DNlast; i < 7; i++) 
+                calendar += '<td>&nbsp;'; //неразрывный пробел. чтоб красиво было где пусто 
+
+            document.querySelector('#'+id+' tbody').innerHTML = calendar;
+            document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+            document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+            document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+
+            if (document.querySelectorAll('#'+id+' tbody tr').length < 6) 
+            {  
+                document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+            }
+			
+			// переключатель минус месяц
+			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() 
+			{
+				Сalendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)-1);
+			}
+			// переключатель плюс месяц
+			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() 
+			{
+				Сalendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
+			}
+    	}
+        Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
 	</script>
 </body>
 </html>
