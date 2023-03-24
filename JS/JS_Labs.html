@@ -28,9 +28,12 @@
 			</div>
 		</div>
 		<div>
-			<button onclick="toggleContent(3)">Лабораторная 3</button>
+			<button onclick="toggleContent(3)">Лабораторная 8</button>
 			<div class="content" id="content3">
-				<p>Лабораторная 3</p>
+				<div class="task8container">
+					<h3 class="task8text">ку)</h3>
+					<img class="task8img" id="task8nig" src="img/task8.jpg" alt="niggers" />
+				</div>
 			</div>
 		</div>
 		<div>
@@ -129,6 +132,50 @@
     	}
         Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
 
+		//task 8
+		function makehover(obj, opacity_new, mult)
+		{
+			if (obj.style.opacity <= 1 && obj.style.opacity >= 0) {
+				opacity_new = opacity_new - 0.1 * mult;
+				obj.style.opacity = opacity_new;
+				if (obj.style.opacity > 1) {
+				obj.style.opacity = 1;
+				}
+				if (obj.style.opacity < 0) {
+				obj.style.opacity = 0;
+				}
+			}
+		}
+
+		nig = document.getElementById("task8nig");
+		hoveredall = false;
+		let hov, allhov;
+
+		let mult = -1;
+		const isHover = (e) => e.parentElement.querySelector(":hover") === e;
+
+		const myDiv = document.getElementById("task8nig");
+		document.addEventListener("mousemove", function checkHover() {
+		const hovered = isHover(myDiv);
+		if (hovered !== checkHover.hovered) {
+			if (hovered) {
+			clearInterval(allhov);
+			mult = +1;
+			hov = setInterval(function () {
+				makehover(myDiv, myDiv.style.opacity, mult);
+			}, 50);
+			} else {
+			mult = -1;
+			clearInterval(hov);
+			allhov = setInterval(function () {
+				makehover(myDiv, myDiv.style.opacity, mult);
+			}, 50);
+			}
+			checkHover.hovered = hovered;
+			hoveredall = hovered;
+		}
+		});
+
 		//task 11
 		const canvas = document.getElementById("game");
 		const ctx = canvas.getContext("2d");
@@ -210,7 +257,6 @@
 
 			if(snakeX < box || snakeX > box * 17 || snakeY < 3 * box || snakeY > box * 17)
 			{
-				// clearInterval(game);
 				restartGame();
 			}
 
@@ -245,10 +291,14 @@
 				snakeX = snake[0].x;
 				snakeY = snake[0].y;
 
+				
+				newHead = {
+					x: snakeX,
+					y: snakeY
+				};
 				setInterval(game);
 			}
 		}
-		
 		let game = setInterval(drawGame, 100);
 	</script>
 </body>

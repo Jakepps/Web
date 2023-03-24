@@ -43,7 +43,7 @@ body{
 
 .menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     height: 10px;
     background-color: #ffffff;
@@ -155,7 +155,7 @@ button:hover{
 }
 
 img {
-    width: 60%;
+    width: 84%;
     height: auto;
     display: block;
     margin: auto auto auto auto;

@@ -52,7 +52,7 @@
       box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* календарь */
+/* календарь tack 2*/
 #calendar {
     width: 100%;
     font: monospace;
@@ -83,8 +83,28 @@
     color: #fff;
 }
 
-/* змейка */
+/* пропадает картинка task 8 */
+.task8img {
+    max-width: 500px;
+    max-height: 500px;
+    z-index: 20;
+}
+
+.task8text {
+    font-size: 30px;
+    font-weight: 800;
+    z-index: 10;
+    position: absolute;
+}
+
+.task8container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* змейка task 11 */
 canvas {
     display: block;
     margin: 0 auto;
-}
+}  
