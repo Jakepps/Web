@@ -170,13 +170,14 @@
 				dir = "down";
 			}
 
-			function eatTail(head, arr) {
-			for(let i = 0; i < arr.length; i++) 
+			function eatTail(head, arr) 
 			{
-				if(head.x == arr[i].x && head.y == arr[i].y)
-				clearInterval(game);
+				for(let i = 0; i < arr.length; i++) 
+				{
+					if(head.x == arr[i].x && head.y == arr[i].y)
+					clearInterval(game);
+				}
 			}
-		}
 
 		function drawGame() {
 			ctx.drawImage(ground, 0, 0);
@@ -200,15 +201,18 @@
 			{
 				score++;
 				food = {
-				x: Math.floor((Math.random() * 17 + 1)) * box,
-				y: Math.floor((Math.random() * 15 + 3)) * box,
+					x: Math.floor((Math.random() * 17 + 1)) * box,
+					y: Math.floor((Math.random() * 15 + 3)) * box,
 				};
 			} else {
 				snake.pop();
 			}
 
 			if(snakeX < box || snakeX > box * 17 || snakeY < 3 * box || snakeY > box * 17)
-				clearInterval(game);
+			{
+				// clearInterval(game);
+				restartGame();
+			}
 
 			if(dir == "left") snakeX -= box;
 			if(dir == "right") snakeX += box;
@@ -224,6 +228,25 @@
 			eatTail(newHead, snake);
 
 			snake.unshift(newHead);
+			
+			function restartGame() 
+			{			
+				snake.splice(0, snake.length);
+				score = 0;
+
+				food.x = Math.floor((Math.random() * 17 + 1)) * box;
+				food.y = Math.floor((Math.random() * 15 + 3)) * box;
+				
+				snake[0] = {
+					x: 9 * box,
+					y: 10 * box
+				};
+
+				snakeX = snake[0].x;
+				snakeY = snake[0].y;
+
+				setInterval(game);
+			}
 		}
 		
 		let game = setInterval(drawGame, 100);
