@@ -10,38 +10,101 @@
 	<div class="var">
 		<p>Вариант 22</p>
 	</div>
-	<div class="menu">
+	<div class="menuall">
+
 		<div>
 			<button onclick="toggleContent(1); showDateTime();">Лабораторная 1</button>
 			<div class="content" id="content1"></div>
 		</div>
+
 		<div>
 			<button onclick="toggleContent(2)">Лабораторная 2</button>
 			<div class="content" id="content2">
 				<table id="calendar">
 					<thead>
-					<tr><td>‹<td colspan="5"><td>›  <!-- ячейка расширяется на 5 стобцов  -->
+					<tr><td>‹<td colspan="5"><td>› 
 					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
 					<tbody>
 				</table>
-				
 			</div>
 		</div>
+
 		<div>
-			<button onclick="toggleContent(3)">Лабораторная 8</button>
-			<div class="content" id="content3">
+			<button onclick="toggleContent(4)">Лабораторная 4</button>
+			<div class="content" id="content4">
+
+			</div>
+		</div>
+
+		<div>
+			<button onclick="toggleContent(7)">Лабораторная 7</button>
+			<div class="content" id="content7">
+				<div class="menu cand">
+					<h3 class="title">СЛАДОСТИ</h3>
+					<ul id="list7">
+						<li>Печенье</li>
+						<li>Шоколад</li>
+						<li>Конфета</li>
+						<li>Леденец</li>
+					</ul>
+				<h3 id="end7">СЛАДОСТИ КОНЧИЛИСЬ</h3>
+				</div>
+			</div>
+			<script>
+				function remove(link) {
+					link.parentNode.parentNode.removeChild(link.parentNode);
+				}
+
+				let endtext = document.getElementById("end7");
+				endtext.style.visibility = "hidden";
+		
+				let menuElement = document.querySelector(".cand");
+				let titleElement = menuElement.querySelector(".title");
+				
+				titleElement.onclick = function () {
+				  menuElement.classList.toggle("hidden");
+				};
+		
+				document.addEventListener("DOMContentLoaded", function () {
+				  const itemsList = document.getElementById("list7");
+		
+				  itemsList.addEventListener("click", function (event) {
+					let target = event.target;
+					if (target.tagName === "LI") {
+					  target.classList.add("fading");
+					  setTimeout(() => {
+						target.remove();
+					  }, 100);
+					}
+					
+					if (itemsList.childElementCount == 1) {
+						setTimeout(()=>{
+							endtext.style.visibility = "visible";
+							endtext.classList.add("fading_out");
+						},120);
+					}
+				  });
+				});
+			  </script>
+		</div>
+
+		<div>
+			<button onclick="toggleContent(8)">Лабораторная 8</button>
+			<div class="content" id="content8">
 				<div class="task8container">
 					<h3 class="task8text">ку)</h3>
 					<img class="task8img" id="task8nig" src="img/task8.jpg" alt="niggers" />
 				</div>
 			</div>
 		</div>
+
 		<div>
 			<button onclick="toggleContent(11)">Лабораторная 11</button>
 			<div class="content" id="content11">
 				<canvas id="game" width="608" height="608"></canvas>
 			</div>
 		</div>
+
 	</div>
 	<script>
 		function toggleContent(id)
@@ -131,6 +194,11 @@
 			}
     	}
         Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
+
+		//task 4
+
+		//task 7
+
 
 		//task 8
 		function makehover(obj, opacity_new, mult)
