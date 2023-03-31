@@ -81,17 +81,33 @@
 
 #calendar tbody td {
     color: rgb(44, 86, 122);
+    border: none;
 }
 
 #calendar tbody td:nth-child(n+6), #calendar .holiday {
     color: rgb(231, 140, 92);
+    border: none;
 }
 
 #calendar tbody td.today {
     background: rgb(220, 0, 0);
     color: #fff;
+    
+}
+/*task 6*/
+
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
+.mytable{
+    padding: 30px;
+}
+
+.mytable td{
+    padding: 30px;
+}
 /*task 7*/
 .menu ul {
     margin: 0;

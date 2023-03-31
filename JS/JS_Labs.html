@@ -37,6 +37,52 @@
 		</div>
 
 		<div>
+			<button onclick="toggleContent(6)">Лабораторная 6</button>
+			<div class="content" id="content6">
+				<table class ="mytable" id="myTable">
+					<tr>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					</tr>
+					<tr>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					</tr>
+					<tr>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					</tr>
+					<tr>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					  <td></td>
+					</tr>
+				</table>
+			</div>
+			<script>
+				let table = document.getElementById("myTable");
+			
+				for (let i = 0; i < table.rows.length; i++) {
+					for (let j = 0; j < table.rows[i].cells.length; j++) {
+						table.rows[i].cells[j].addEventListener("click", function() {
+							let text = prompt("Введите текст для ячейки:");
+							if (text !== null) {
+							this.innerHTML = text;
+							}
+						});
+					}
+				}
+			</script>
+		</div>
+
+		<div>
 			<button onclick="toggleContent(7)">Лабораторная 7</button>
 			<div class="content" id="content7">
 				<div class="menu cand">
@@ -194,9 +240,6 @@
 			}
     	}
         Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
-
-		//task 4
-
 		//task 7
 
 
