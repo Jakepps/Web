@@ -62,7 +62,7 @@
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* календарь tack 2*/
+/*tack 2*/
 #calendar {
     width: 100%;
     font: monospace;
@@ -117,6 +117,7 @@ table, td {
 .mytable td{
     padding: 30px;
 }
+
 /*task 7*/
 .menu ul {
     margin: 0;
@@ -146,7 +147,7 @@ table, td {
     top: 1px;
 }
 
-/* пропадает картинка task 8 */
+/*task 8 */
 .task8img {
     max-width: 500px;
     max-height: 500px;
@@ -166,7 +167,43 @@ table, td {
     align-items: center;
 }
 
-/* змейка task 11 */
+/*task 9*/
+input[type=text],
+input[type=password],
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus {
+    border: 2px solid #222222;
+}
+
+button[type=submit] {
+    background-color: #222222;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button[type=submit]:hover {
+    background-color: #141414;
+}
+
+.language{
+    font-size: 17px;
+}
+
+/*task 11 */
 canvas {
     display: block;
     margin: 0 auto;
