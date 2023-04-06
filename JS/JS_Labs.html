@@ -32,9 +32,8 @@
 		<div>
 			<button onclick="toggleContent(3)">Лабораторная 3</button>
 			<div class="content" id="content3">
-				<h3>Задача 3</h3>
 				<p>Получить список таблиц в DOM-дереве и вывести их количество</p>
-				<h3>количество таблиц: <span id="task3">0</span></h3>	
+				<h3>Количество таблиц: <span id="task3">0</span></h3>	
 				<script>
 					setTimeout(function () {
 						domTreeTables = document.getElementsByTagName("TABLE");
@@ -47,25 +46,27 @@
 		</div>
 
 		<div>
-			<button onclick="toggleContent(4); startTimer()">Лабораторная 4 - в процессе</button>
+			<button onclick="toggleContent(4)">Лабораторная 4</button>
 			<div class="content" id="content4">
-				<div class="square" id="square1"></div>
-				<div class="square" id="square2"></div>
-				<div class="square" id="square3"></div>
-				<div class="square" id="square4"></div>
-				<div class="square" id="square5"></div>
-				<div class="square" id="square6"></div>
+				<div style="background-color: #000;" class="square"></div>
+				<div style="background-color: #ff0000;" class="square"></div>
+				<div style="background-color: #00ff0d;" class="square"></div>
+				<div style="background-color: #0011ff;" class="square"></div>
+				<div style="background-color: #ff04de;" class="square"></div>
+				<div style="background-color: #ffe600;" class="square"></div>
+				<button style="background-color: rgb(173, 11, 11); height:30px;
+				width: 300px;" onclick="startTimer()"> Удалить </button>
 			</div>
 			<script>
 			function hideRandomSquare() {
 				var squares = document.getElementsByClassName("square");
-				var randomIndex = Math.floor(Math.random() * 6) + 1;
+				var randomIndex =  Math.floor(Math.random() * squares.length);
 				var square = squares[randomIndex];
 				square.style.display = "none";
 			}
 
 			function startTimer() {
-				setTimeout(hideRandomSquare, 1000);
+				setTimeout(hideRandomSquare, 120);
 			}
 			</script>
 		</div>
