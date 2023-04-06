@@ -242,20 +242,24 @@
 
 		
 		<div>
-			<button onclick="toggleContent(9)">Лабораторная 9 - в процессе</button>
+			<button onclick="toggleContent(9)">Лабораторная 9 + 10</button>
 			<div class="content" id="content9">
 				<div style="display: block; font-size: 17px;">Форма на прием в NullExp</div>
-				<form id="task9-form">
+				<!-- onsubmit="return false;" -->
+				<form id="task9-form" > 
 					<input type="text" id="email1" placeholder="E-mail">
-					<input type="password" id="password1" placeholder="Password">
-					<input type="password" id="password2" placeholder="Confirm password">
+					<input type="password" id="password1" placeholder="Пароль">
+					<input type="password" id="password2" placeholder="Подтвердите пароль">
+					<input type="phone" id="phone" placeholder="Номер телефона">
+					<label for="birthday">Дата рождения:</label>
+					<input type="date" id="birthday" name="birthday">
 
-					<p style="font-size: 17px;">Какие языки вы знаете?</p>
+					<p class = "check" style="font-size: 17px;">Какие языки вы знаете?</p>
 					<label class="language"><input type="checkbox" name="languages" value="Django"> C#</label>
 					<label class="language"><input type="checkbox" name="languages" value="Flask"> Dart</label>
 					<label class="language"><input type="checkbox" name="languages" value="Pyramid"> Python</label>
 					<label class="language"><input type="checkbox" name="languages" value="FastAPI"> Swift</label>
-
+ 
 					<p style="display: block; font-size: 17px;" for="professions">Выберите вашу профессию:</p>
 					<select style="display: block; font-size: 17px;" id="professions" name="professions">
 						<option value="developer">WEB-дизайнер</option>
@@ -273,15 +277,96 @@
 					 cursor: pointer; width: 100%; font-size: 16px;" id="clear-button">Очистить</button>
 				</form>
 				<script>
+					document.querySelector('#email1').addEventListener('input', function(event) {
+						const emailInput = event.target;
+						const emailValue = emailInput.value;
+						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+						
+						if (emailRegex.test(emailValue)) {
+							emailInput.style.borderColor = 'green';
+							emailInput.classList.remove('error');
+						} else {
+							emailInput.style.borderColor = 'red';
+							emailInput.classList.add('error');
+						}
+					});
 
+					document.querySelector('#password1').addEventListener('input', function(event) {
+						const passwordInput = event.target;
+						const passwordValue = passwordInput.value;
+						const passwordRegex = /^(?=.*\d).{8,}$/;
+						
+						if (passwordRegex.test(passwordValue)) {
+							passwordInput.style.borderColor = 'green';
+							passwordInput.classList.remove('error');
+						} else {
+							passwordInput.style.borderColor = 'red';
+							passwordInput.classList.add('error');
+						}
+					});
+
+					document.querySelector('#password2').addEventListener('input', function(event) {
+						const passwordConfirmInput = event.target;
+						const passwordConfirmValue = passwordConfirmInput.value;
+						const passwordValue = document.querySelector('#password1').value;
+
+						if (passwordConfirmValue === passwordValue) {
+							passwordConfirmInput.style.borderColor = 'green';
+							passwordConfirmInput.classList.remove('error');
+						} else {
+							passwordConfirmInput.style.borderColor = 'red';
+							passwordConfirmInput.classList.add('error');
+						}
+					});
+
+					document.querySelector('#phone').addEventListener('input', function(event) {
+						const phoneInput = event.target;
+						const phoneValue = phoneInput.value;
+						const phoneRegex = /^(\+7)?\s?(\(\d{3}\)|\d{3})\s?\d{3}(-|\s)?\d{2}(-|\s)?\d{2}$/;
+						
+						if (phoneRegex.test(phoneValue)) {
+							phoneInput.style.borderColor = 'green';
+							phoneInput.classList.remove('error');
+						} else {
+							phoneInput.style.borderColor = 'red';
+							phoneInput.classList.add('error');
+						}
+					});
+
+					yearInput.addEventListener('input', function(event) {
+						const yearValue = parseInt(event.target.value);
+						
+						if (yearValue < 1950 || yearValue > 2023) {
+							event.target.style.color = 'red';
+						} else {
+							event.target.style.color = 'black';
+						}
+					});
+
+					const languageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="languages"]');
+					const languagesTitle = document.querySelector('.check');
+
+					document.querySelector('#task9-form').addEventListener('submit', function(event) {
+						let isLanguageSelected = false;
+
+						for (const checkbox of languageCheckboxes)
+						{
+							if (checkbox.checked) {
+								isLanguageSelected = true;
+								break;
+							}
+						}
+
+						if (isLanguageSelected) {
+							languagesTitle.style.color = 'black';
+							languagesTitle.classList.remove('error');
+						} else {
+							languagesTitle.style.color = 'red';
+							languagesTitle.classList.add('error');
+							event.preventDefault();
+						}
+					});
 				</script>
-			</div>
-		</div>
-		
-		<div>
-			<button onclick="toggleContent(10)">Лабораторная 10 - в процессе</button>
-			<div class="content" id="content10">
-
 			</div>
 		</div>
 
