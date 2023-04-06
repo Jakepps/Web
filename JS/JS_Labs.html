@@ -30,8 +30,20 @@
 		</div>
 
 		<div>
-			<button onclick="toggleContent(3)">Лабораторная 3 - в процессе</button>
-			<div class="content" id="content3"></div>
+			<button onclick="toggleContent(3)">Лабораторная 3</button>
+			<div class="content" id="content3">
+				<h3>Задача 3</h3>
+				<p>Получить список таблиц в DOM-дереве и вывести их количество</p>
+				<h3>количество таблиц: <span id="task3">0</span></h3>	
+				<script>
+					setTimeout(function () {
+						domTreeTables = document.getElementsByTagName("TABLE");
+						task3h3 = document.getElementById("task3");
+						task3h3.textContent = domTreeTables.length;
+						console.log(domTreeTables.length);
+					}, 1000);
+				</script>	
+			</div>	  
 		</div>
 
 		<div>
