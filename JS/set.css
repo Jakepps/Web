@@ -167,7 +167,7 @@ table, td {
     align-items: center;
 }
 
-/*task 9*/
+/*task 9-10*/
 input[type=text],
 input[type=password],
 input[type=email],
@@ -204,7 +204,15 @@ button[type=submit]:hover {
 .language{
     font-size: 17px;
 }
-
+#clear-button{
+    background-color: #222222; 
+    color: white; 
+    margin: 8px 0; 
+    border: none;
+    cursor: pointer;
+    width: 100%; 
+    font-size: 16px;
+}
 /*task 11 */
 canvas {
     display: block;

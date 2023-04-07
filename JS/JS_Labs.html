@@ -241,18 +241,14 @@
 		</div>
 
 		
-		<div>
-			<button onclick="toggleContent(9)">Лабораторная 9 + 10</button>
+		<!-- <div>
+			<button onclick="toggleContent(9)">Лабораторная 9</button>
 			<div class="content" id="content9">
 				<div style="display: block; font-size: 17px;">Форма на прием в NullExp</div>
-				<!-- onsubmit="return false;" -->
+				onsubmit="return false;"
 				<form id="task9-form" > 
 					<input type="text" id="email1" placeholder="E-mail">
 					<input type="password" id="password1" placeholder="Пароль">
-					<input type="password" id="password2" placeholder="Подтвердите пароль">
-					<input type="phone" id="phone" placeholder="Номер телефона">
-					<label for="birthday">Дата рождения:</label>
-					<input type="date" id="birthday" name="birthday">
 
 					<p class = "check" style="font-size: 17px;">Какие языки вы знаете?</p>
 					<label class="language"><input type="checkbox" name="languages" value="Django"> C#</label>
@@ -273,17 +269,114 @@
 					<textarea style="display: block; font-size: 17px;" rows="4" cols="50" scrolling="auto"></textarea>
 
 					<button type="submit">Зарегистрироваться</button>
-					<button type="button" style= " background-color: #222222; color: white; margin: 8px 0; border: none;
-					 cursor: pointer; width: 100%; font-size: 16px;" id="clear-button">Очистить</button>
+					<button type="button" id="clear-button">Очистить</button>
 				</form>
 				<script>
-					document.querySelector('#email1').addEventListener('input', function(event) {
+					const clearBtn = document.querySelector('#clear-button');
+					const inputFields = document.querySelectorAll('input');
+
+					clearBtn.addEventListener('click', function() {
+						inputFields.forEach(input => input.value = '');
+					});
+
+					const email = document.getElementById("email1");
+					const password = document.getElementById("password1");
+					const languages = document.getElementsByName("languages");
+
+					email.addEventListener("input", () => {
+						if (email.value.indexOf("@") > 0) {
+							email.classList.remove("error");
+						} else {
+							email.style.color = "red";
+							email.classList.add("error");
+						}
+					});
+
+					password.addEventListener("input", () => {
+						if (password.value.length < 5) {
+							password.classList.remove("error");
+						} else {	
+							password.style.color = "red";
+							password.classList.add("error");
+						}
+					});	
+
+					languages.forEach(language => {
+						language.addEventListener("input", () => {
+							if (language.checked) {
+								language.parentNode.classList.remove("error");
+							} else {
+								language.style.color = "red";
+								language.parentNode.classList.add("error");
+							}
+						});
+					});
+
+				</script>
+			</div>
+		</div> -->
+		<div>
+			<button onclick="toggleContent(10)">Лабораторная 10</button>
+			<div class="content" id="content10">
+				<div style="display: block; font-size: 17px;">Форма на прием в NullExp</div>
+				<!-- onsubmit="return false;" -->
+				<form id="task9-form" > 
+					<input type="text" id="fio" placeholder="ФИО (отчество, если имеется)">
+					<input type="text" id="email2" placeholder="E-mail">
+					<input type="password" id="password2" placeholder="Пароль">
+					<input type="password" id="password3" placeholder="Подтвердите пароль">
+					<input type="phone" id="phone" placeholder="Номер телефона">
+					<label for="birthday">Дата рождения:</label>
+					<input type="date" id="birthday" name="birthday">
+
+					<p class = "check" style="font-size: 17px;">Какие языки вы знаете?</p>
+					<label class="language"><input type="checkbox" name="languages" value="C#"> C#</label>
+					<label class="language"><input type="checkbox" name="languages" value="Dart"> Dart</label>
+					<label class="language"><input type="checkbox" name="languages" value="Python"> Python</label>
+					<label class="language"><input type="checkbox" name="languages" value="Swift"> Swift</label>
+ 
+					<p style="display: block; font-size: 17px;" for="professions">Выберите вашу профессию:</p>
+					<select style="display: block; font-size: 17px;" id="professions" name="professions" onchange="showOtherInput()">
+						<option value="developer">WEB-дизайнер</option>
+						<option value="designer">Front-end</option>
+						<option value="manager">Back-end</option>
+						<option value="writer">Люблю виджеты</option>
+						<option value="other">Другое</option>
+					</select>
+
+					<div id="other-input" style="display: none;">
+						<label style="display: block; font-size: 17px;  margin-bottom: 20px;" for="other-profession">Опишите свою профессию:</label>
+						<input style="display: block; font-size: 17px;  margin-bottom: 20px;" type="text" id="other-profession" name="other-profession">
+					</div>
+
+					<p style="display: block; font-size: 19px;">Расскажите немного о себе.</p>
+					<textarea style="display: block; font-size: 17px;" rows="4" cols="50" scrolling="auto"  placeholder="Личная характеристика"></textarea>
+
+					<button type="submit">Зарегистрироваться</button>
+					<button type="button" id="clear-button">Очистить</button>
+				</form>
+				<script>
+					const fioInput = document.querySelector('#fio');
+
+					fioInput.addEventListener('input', function(event) {
+						const fioRegex = /^(?!Якухнов Роман)[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+( [А-ЯЁ][а-яё]+)?$/;;
+						const fioValue = event.target.value.trim();
+						if (fioRegex.test(fioValue)) {
+							fioInput.style.borderColor = '#ccc';
+							fioInput.classList.remove('error');
+						} else {
+							fioInput.style.borderColor = 'red';
+							fioInput.classList.add('error');
+						}
+					});
+
+					document.querySelector('#email2').addEventListener('input', function(event) {
 						const emailInput = event.target;
 						const emailValue = emailInput.value;
 						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 						
 						if (emailRegex.test(emailValue)) {
-							emailInput.style.borderColor = 'green';
+							emailInput.style.borderColor = '#ccc';
 							emailInput.classList.remove('error');
 						} else {
 							emailInput.style.borderColor = 'red';
@@ -291,13 +384,13 @@
 						}
 					});
 
-					document.querySelector('#password1').addEventListener('input', function(event) {
+					document.querySelector('#password2').addEventListener('input', function(event) {
 						const passwordInput = event.target;
 						const passwordValue = passwordInput.value;
 						const passwordRegex = /^(?=.*\d).{8,}$/;
 						
 						if (passwordRegex.test(passwordValue)) {
-							passwordInput.style.borderColor = 'green';
+							passwordInput.style.borderColor = '#ccc';
 							passwordInput.classList.remove('error');
 						} else {
 							passwordInput.style.borderColor = 'red';
@@ -305,13 +398,13 @@
 						}
 					});
 
-					document.querySelector('#password2').addEventListener('input', function(event) {
+					document.querySelector('#password3').addEventListener('input', function(event) {
 						const passwordConfirmInput = event.target;
 						const passwordConfirmValue = passwordConfirmInput.value;
-						const passwordValue = document.querySelector('#password1').value;
+						const passwordValue = document.querySelector('#password2').value;
 
 						if (passwordConfirmValue === passwordValue) {
-							passwordConfirmInput.style.borderColor = 'green';
+							passwordConfirmInput.style.borderColor = '#ccc';
 							passwordConfirmInput.classList.remove('error');
 						} else {
 							passwordConfirmInput.style.borderColor = 'red';
@@ -325,7 +418,7 @@
 						const phoneRegex = /^(\+7)?\s?(\(\d{3}\)|\d{3})\s?\d{3}(-|\s)?\d{2}(-|\s)?\d{2}$/;
 						
 						if (phoneRegex.test(phoneValue)) {
-							phoneInput.style.borderColor = 'green';
+							phoneInput.style.borderColor = '#ccc';
 							phoneInput.classList.remove('error');
 						} else {
 							phoneInput.style.borderColor = 'red';
@@ -333,13 +426,17 @@
 						}
 					});
 
-					yearInput.addEventListener('input', function(event) {
-						const yearValue = parseInt(event.target.value);
+					const birthdayInput = document.getElementById('birthday');
+
+					birthdayInput.addEventListener('change', function(event) {
+						const birthdayValue = new Date(event.target.value);
+						const minDate = new Date('1950-01-01');
+						const maxDate = new Date('2023-12-31');
 						
-						if (yearValue < 1950 || yearValue > 2023) {
-							event.target.style.color = 'red';
+						if (birthdayValue < minDate || birthdayValue > maxDate) {
+							birthdayInput.style.borderColor = 'red';
 						} else {
-							event.target.style.color = 'black';
+							birthdayInput.style.borderColor = '#ccc';
 						}
 					});
 
@@ -358,7 +455,7 @@
 						}
 
 						if (isLanguageSelected) {
-							languagesTitle.style.color = 'black';
+							languagesTitle.style.color = '#ccc';
 							languagesTitle.classList.remove('error');
 						} else {
 							languagesTitle.style.color = 'red';
@@ -366,10 +463,39 @@
 							event.preventDefault();
 						}
 					});
+
+					function showOtherInput() {
+						const select = document.getElementById("professions");
+						const otherInput = document.getElementById("other-input");
+						if (select.value === "other") {
+							otherInput.style.display = "block";
+						} else {
+							otherInput.style.display = "none";
+						}
+					}
+
+					const clearBtn2 = document.querySelector('#clear-button');
+					const inputFields2 = document.querySelectorAll('input');
+
+					clearBtn2.addEventListener('click', function() {
+						const emailInput = document.querySelector('#email2');
+						const passwordInput = document.querySelector('#password2');
+						const passwordConfirmInput = document.querySelector('#password3');
+						const phoneInput = document.querySelector('#phone');
+
+						inputFields2.forEach(input => input.value = '');
+						fioInput.style.borderColor = '#ccc';
+						emailInput.style.borderColor = '#ccc';
+						passwordInput.style.borderColor = '#ccc';
+						passwordConfirmInput.style.borderColor = '#ccc';
+						phoneInput.style.borderColor = '#ccc';
+						birthdayInput.style.borderColor = '#ccc';
+						languagesTitle.style.color = '#ccc';
+					});
+
 				</script>
 			</div>
 		</div>
-
 		<div>
 			<button onclick="toggleContent(11)">Лабораторная 11</button>
 			<div class="content" id="content11">
