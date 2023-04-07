@@ -327,7 +327,7 @@
 					<input type="text" id="email2" placeholder="E-mail">
 					<label id="MailErr" style="color:red; display:none">Неверный формат почты</label>
 					<input type="password" id="password2" placeholder="Пароль">
-					<label id="PassErr" style="color:red; display:none">Неверный формат пароля</label>
+					<label id="PassErr" style="color:red; display:none">Неверный формат пароля. Пароль должен состоять хотя бы из 8 символов и хотя бы одной цифры.</label>
 					<input type="password" id="password3" placeholder="Подтвердите пароль">
 					<label id="ConfPassErr" style="color:red; display:none">Пароли не совпадают</label>
 					<input type="phone" id="phone" placeholder="Номер телефона">
@@ -541,6 +541,7 @@
 						radios.forEach(radio => {
 							radio.checked = false;
 						});
+
 						inputFields2.forEach(input => input.value = '');
 						fioInput.style.borderColor = '#ccc';
 						emailInput.style.borderColor = '#ccc';
