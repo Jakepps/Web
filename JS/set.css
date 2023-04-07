@@ -173,7 +173,7 @@ input[type=password],
 input[type=email],
 input[type=phone],
 input[type=date]{
-    width: 100%;
+    width: 1000px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
