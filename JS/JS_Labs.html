@@ -33,7 +33,11 @@
 			<button onclick="toggleContent(3)">Лабораторная 3</button>
 			<div class="content" id="content3">
 				<p>Получить список таблиц в DOM-дереве и вывести их количество</p>
-				<h3>Количество таблиц: <span id="task3">0</span></h3>	
+				<h3>Количество таблиц: <span id="task3">0</span></h3>
+				<!-- <table>
+					<td> fd</td>
+					<td> fdf</td>
+				</table>	 -->
 				<script>
 					setTimeout(function () {
 						domTreeTables = document.getElementsByTagName("TABLE");
@@ -58,16 +62,16 @@
 				width: 300px;" onclick="startTimer()"> Удалить </button>
 			</div>
 			<script>
-			function hideRandomSquare() {
-				var squares = document.getElementsByClassName("square");
-				var randomIndex =  Math.floor(Math.random() * squares.length);
-				var square = squares[randomIndex];
-				square.remove();
-			}
+				function hideRandomSquare() {
+					var squares = document.getElementsByClassName("square");
+					var randomIndex =  Math.floor(Math.random() * squares.length);
+					var square = squares[randomIndex];
+					square.remove();
+				}
 
-			function startTimer() {
-				setTimeout(hideRandomSquare, 120);
-			}
+				function startTimer() {
+					setTimeout(hideRandomSquare, 120);
+				}
 			</script>
 		</div>
 
@@ -193,10 +197,6 @@
 				</div>
 			</div>
 			<script>
-				function remove(link) {
-					link.parentNode.parentNode.removeChild(link.parentNode);
-				}
-
 				let endtext = document.getElementById("end7");
 				endtext.style.visibility = "hidden";
 		
@@ -654,9 +654,7 @@
 			}
     	}
         Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
-		//task 7
-
-
+	
 		//task 8
 		function makehover(obj, opacity_new, mult)
 		{
