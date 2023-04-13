@@ -367,6 +367,10 @@
 					<button type="button" id="clear-button">Очистить</button>
 				</form>
 				<script>
+					const form = document.querySelector('form');
+					const submitButton = document.querySelector('[type="submit"]');
+					submitButton.disabled = true;
+
 					const fioInput = document.querySelector('#fio');
 
 					fioInput.addEventListener('input', function(event) {
@@ -378,10 +382,12 @@
 							fioInput.style.borderColor = '#ccc';
 							fioErr.style.display = "none";
 							fioInput.classList.remove('error');
+							submitButton.disabled = false;
 						} else {
 							fioInput.style.borderColor = 'red';
 							fioErr.style.display = "block";
 							fioInput.classList.add('error');
+							submitButton.disabled = true;
 						}
 					});
 
@@ -395,10 +401,12 @@
 							emailInput.style.borderColor = '#ccc';
 							MailErr.style.display = "none";
 							emailInput.classList.remove('error');
+							submitButton.disabled = false;
 						} else {
 							emailInput.style.borderColor = 'red';
 							MailErr.style.display = "block";
 							emailInput.classList.add('error');
+							submitButton.disabled = true;
 						}
 					});
 
@@ -412,10 +420,12 @@
 							passwordInput.style.borderColor = '#ccc';
 							PassErr.style.display = "none";
 							passwordInput.classList.remove('error');
+							submitButton.disabled = false;
 						} else {
 							passwordInput.style.borderColor = 'red';
 							PassErr.style.display = "block";
 							passwordInput.classList.add('error');
+							submitButton.disabled = true;
 						}
 					});
 
@@ -429,10 +439,12 @@
 							passwordConfirmInput.style.borderColor = '#ccc';
 							ConfPassErr.style.display = "none";
 							passwordConfirmInput.classList.remove('error');
+							submitButton.disabled = false;
 						} else {
 							passwordConfirmInput.style.borderColor = 'red';
 							ConfPassErr.style.display = "block";
 							passwordConfirmInput.classList.add('error');
+							submitButton.disabled = true;
 						}
 					});
 
@@ -446,10 +458,12 @@
 							phoneInput.style.borderColor = '#ccc';
 							PhoneErr.style.display = "none";
 							phoneInput.classList.remove('error');
+							submitButton.disabled = false;
 						} else {
 							phoneInput.style.borderColor = 'red';
 							PhoneErr.style.display = "block";
 							phoneInput.classList.add('error');
+							submitButton.disabled = true;
 						}
 					});
 
@@ -464,9 +478,11 @@
 						if (birthdayValue < minDate || birthdayValue > maxDate) {
 							birthdayInput.style.borderColor = 'red';
 							birthErr.style.display = "block";
+							submitButton.disabled = true;
 						} else {
 							birthErr.style.display = "none";
 							birthdayInput.style.borderColor = '#ccc';
+							submitButton.disabled = false;
 						}
 					});
 
@@ -534,6 +550,8 @@
 						const AboutMe = document.getElementById('AboutMe');
 						const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 						const radios = document.querySelectorAll('input[type="radio"]');
+						const prof = document.getElementById("professions");
+						const otherInput = document.getElementById("other-input");
 
 						checkboxes.forEach(checkbox => {
 							checkbox.checked = false;
@@ -552,6 +570,8 @@
 						languagesTitle.style.color = 'black';
 						genderTitle.style.color = 'black';
 						AboutMe.value = '';
+						prof.selectedIndex = 0;
+						otherInput.style.display = "none";
 					});
 
 				</script>
