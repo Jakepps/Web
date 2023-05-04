@@ -2,7 +2,7 @@
     session_start();
     echo session_id();
     if(!isset($_SESSION['logged_user'])){
-        header("Location: index.php");
+        header("Location: login.php");
         exit;
     }
 ?>
@@ -16,5 +16,7 @@
 
     <body>
         <p>Привет, <?php echo $_SESSION['logged_user']; ?>, ты на секретной странице!!!</p>
+        <img src="image/cat.jpg" alt="Котя 1">
+        <img src="image/cat2.jpg" alt="Котя 2">
     </body>
 </html>
