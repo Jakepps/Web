@@ -22,7 +22,7 @@
 			<div class="content" id="content2">
 				<table id="calendar">
 					<thead>
-					<tr><td>‹<td colspan="5"><td>› 
+					<tr><td>‹<td colspan="5"><td>›
 					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
 					<tbody>
 				</table>
@@ -45,8 +45,8 @@
 						task3h3.textContent = domTreeTables.length;
 						console.log(domTreeTables.length);
 					}, 1000);
-				</script>	
-			</div>	  
+				</script>
+			</div>
 		</div>
 
 		<div>
@@ -108,8 +108,8 @@
 					if (!selected) {
 						alert('Выберите элемент для удаления');
 						return;
-					}	
-					
+					}
+
 					const confirmation = confirm(`Вы уверены, что хотите удалить элемент "${selected.textContent}"?`);
 					if (!confirmation) {
 						return;
@@ -168,7 +168,7 @@
 			</div>
 			<script>
 				let table = document.getElementById("myTable");
-			
+
 				for (let i = 0; i < table.rows.length; i++) {
 					for (let j = 0; j < table.rows[i].cells.length; j++) {
 						table.rows[i].cells[j].addEventListener("click", function() {
@@ -185,49 +185,64 @@
 		<div>
 			<button onclick="toggleContent(7)">Лабораторная 7</button>
 			<div class="content" id="content7">
-				<div class="menu cand">
-					<h3 class="title">СЛАДОСТИ</h3>
-					<ul id="list7">
-						<li>Печенье</li>
-						<li>Шоколад</li>
-						<li>Конфета</li>
-						<li>Леденец</li>
-					</ul>
-				<h3 id="end7">СЛАДОСТИ КОНЧИЛИСЬ</h3>
-				</div>
-			</div>
-			<script>
-				let endtext = document.getElementById("end7");
-				endtext.style.visibility = "hidden";
-		
-				let menuElement = document.querySelector(".cand");
-				let titleElement = menuElement.querySelector(".title");
-				
-				titleElement.onclick = function () {
-				  menuElement.classList.toggle("hidden");
-				};
-		
-				document.addEventListener("DOMContentLoaded", function () {
-				  const itemsList = document.getElementById("list7");
-		
-				  itemsList.addEventListener("click", function (event) {
-					let target = event.target;
-					if (target.tagName === "LI") {
-					  target.classList.add("fading");
-					  setTimeout(() => {
-						target.remove();
-					  }, 100);
-					}
-					
-					if (itemsList.childElementCount == 1) {
-						setTimeout(()=>{
-							endtext.style.visibility = "visible";
-							endtext.classList.add("fading_out");
-						},120);
-					}
-				  });
-				});
-			  </script>
+                <div id="task_7" class="hidden">
+                    <ul id="slad_list_name">Cладости (нажмите, чтобы показать сладости)</ul>
+                    <div id = "slad_list" style="display: none" >
+                        <li id="sl_1" class="my_list_no">Конфета</li>
+                        <li id="sl_2" class="my_list_no">Шоколад</li>
+                        <li id="sl_3" class="my_list_no">Печенье</li>
+                        <p id='sl_end' style="display: none">Сладости закончились!</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <script>
+                let flag = 0
+
+                function fade(element, callback) {
+                    let op = 1;
+                    let timer = setInterval(function () {
+                        if (op <= 0.1){
+                            clearInterval(timer);
+                            element.style.display = 'none';
+                            flag += 1;
+                            callback();
+                        }
+                        element.style.opacity = op;
+                        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                        op -= op * 0.1;
+                    }, 50);
+                }
+
+                let sl1 = document.getElementById('sl_1')
+                let sl2 = document.getElementById('sl_2')
+                let sl3 = document.getElementById('sl_3')
+
+                block_1 = [sl1, sl2, sl3]
+
+                sl1.addEventListener('click', () => fade(sl1, alert_sladosty))
+                sl2.addEventListener('click', () => fade(sl2, alert_sladosty))
+                sl3.addEventListener('click', () => fade(sl3, alert_sladosty))
+
+                function alert_sladosty(){
+                    if (flag === 3){
+                        document.getElementById('sl_end').style.display = 'block';
+                    }
+                }
+                let slad_list_name = document.getElementById('slad_list_name');
+                let slad_list = document.getElementById('slad_list');
+
+                slad_list_name.onclick = function() {
+                    if (slad_list.style.display === "block") {
+                        slad_list.style.display = "none";
+                    } else {
+                        slad_list.style.display = "block";
+                    }
+                }
+
+            </script>
 		</div>
 
 		<div>
@@ -240,13 +255,13 @@
 			</div>
 		</div>
 
-		
+
 		<!-- <div>
 			<button onclick="toggleContent(9)">Лабораторная 9</button>
 			<div class="content" id="content9">
 				<div style="display: block; font-size: 17px;">Форма на прием в NullExp</div>
-				< onsubmit="return false;" 
-				<form id="task9-form" > 
+				< onsubmit="return false;"
+				<form id="task9-form" >
 					<input type="text" id="email1" placeholder="E-mail">
 					<input type="password" id="password1" placeholder="Пароль">
 
@@ -255,7 +270,7 @@
 					<label class="language"><input type="checkbox" name="languages" value="Flask"> Dart</label>
 					<label class="language"><input type="checkbox" name="languages" value="Pyramid"> Python</label>
 					<label class="language"><input type="checkbox" name="languages" value="FastAPI"> Swift</label>
- 
+
 					<p style="display: block; font-size: 17px;" for="professions">Выберите вашу профессию:</p>
 					<select style="display: block; font-size: 17px;" id="professions" name="professions">
 						<option value="developer">WEB-дизайнер</option>
@@ -295,11 +310,11 @@
 					password.addEventListener("input", () => {
 						if (password.value.length < 5) {
 							password.classList.remove("error");
-						} else {	
+						} else {
 							password.style.color = "red";
 							password.classList.add("error");
 						}
-					});	
+					});
 
 					languages.forEach(language => {
 						language.addEventListener("input", () => {
@@ -315,13 +330,13 @@
 				</script>
 			</div>
 		</div>  -->
-		
+
 		<div>
 			<button onclick="toggleContent(10)">Лабораторная 9 + 10</button>
 			<div class="content" id="content10">
 				<div style="display: block; font-size: 17px;">Форма на прием в NullExp</div>
 				<!-- onsubmit="return false;" -->
-				<form id="task9-form" > 
+				<form id="task9-form" >
 					<input type="text" id="fio" placeholder="ФИО (отчество, если имеется)">
 					<label id="FioErr" style="color:red; display:none">Неверный формат ФИО</label>
 					<input type="text" id="email2" placeholder="E-mail">
@@ -595,7 +610,7 @@
 				content.style.display = "none";
 			}
 		}
-		
+
 		//Task1
         function showDateTime(){
             let now = new Date();
@@ -606,7 +621,7 @@
 			let daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 			let day_week = daysOfWeek[now.getDay()];
 			let status_date = `${day_week}, ${year}-${day}-${month}`;
-			//время с нулями	
+			//время с нулями
 			let hours = now.getHours().toString().padStart(2, '0');
 			let minutes = now.getMinutes().toString().padStart(2, '0');
 			let seconds = now.getSeconds().toString().padStart(2, '0');
@@ -618,7 +633,7 @@
         }
 
 		//Task2
-		function Сalendar(id, year, month) 
+		function Сalendar(id, year, month)
         {
             var Dlast = new Date(year,month+1,0).getDate(),
                 D = new Date(year,month,Dlast),
@@ -626,55 +641,55 @@
                 DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
                 calendar = '<tr>',
                 month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
-            if (DNfirst != 0) 
+            if (DNfirst != 0)
             {
-                for(var  i = 1; i < DNfirst; i++) 
+                for(var  i = 1; i < DNfirst; i++)
                     calendar += '<td>';
-            } 
+            }
             else {
-                for(var  i = 0; i < 6; i++) 
+                for(var  i = 0; i < 6; i++)
                     calendar += '<td>';
             }
             // определим сегодня
-            for(var  i = 1; i <= Dlast; i++) 
+            for(var  i = 1; i <= Dlast; i++)
             {
                 if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
                         calendar += '<td class="today">' + i;
                 } else {
                     calendar += '<td>' + i;
                 }
-                
+
                 if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
                     calendar += '<tr>';
                 }
             }
-            
-            for(var  i = DNlast; i < 7; i++) 
-                calendar += '<td>&nbsp;'; //неразрывный пробел. чтоб красиво было где пусто 
+
+            for(var  i = DNlast; i < 7; i++)
+                calendar += '<td>&nbsp;'; //неразрывный пробел. чтоб красиво было где пусто
 
             document.querySelector('#'+id+' tbody').innerHTML = calendar;
             document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
             document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
             document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
 
-            if (document.querySelectorAll('#'+id+' tbody tr').length < 6) 
-            {  
+            if (document.querySelectorAll('#'+id+' tbody tr').length < 6)
+            {
                 document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
             }
-			
+
 			// переключатель минус месяц
-			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() 
+			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function()
 			{
 				Сalendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)-1);
 			}
 			// переключатель плюс месяц
-			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() 
+			document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function()
 			{
 				Сalendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
 			}
     	}
         Сalendar("calendar", new Date().getFullYear(), new Date().getMonth());
-	
+
 		//task 8
 		function makehover(obj, opacity_new, mult)
 		{
@@ -760,9 +775,9 @@
 				dir = "down";
 			}
 
-			function eatTail(head, arr) 
+			function eatTail(head, arr)
 			{
-				for(let i = 0; i < arr.length; i++) 
+				for(let i = 0; i < arr.length; i++)
 				{
 					if(head.x == arr[i].x && head.y == arr[i].y)
 					clearInterval(game);
@@ -774,7 +789,7 @@
 
 			ctx.drawImage(foodImg, food.x, food.y);
 
-			for(let i = 0; i < snake.length; i++) 
+			for(let i = 0; i < snake.length; i++)
 			{
 				ctx.fillStyle = i == 0 ? "green" : "red";
 				ctx.fillRect(snake[i].x, snake[i].y, box, box);
@@ -812,20 +827,20 @@
 				x: snakeX,
 				y: snakeY
 			};
-			
+
 			//проверим пересекается ли новая голова с хвостом чтобы ниче не сломалось
 			eatTail(newHead, snake);
 
 			snake.unshift(newHead);
-			
-			function restartGame() 
-			{			
+
+			function restartGame()
+			{
 				snake.splice(0, snake.length);
 				score = 0;
 
 				food.x = Math.floor((Math.random() * 17 + 1)) * box;
 				food.y = Math.floor((Math.random() * 15 + 3)) * box;
-				
+
 				snake[0] = {
 					x: 9 * box,
 					y: 10 * box
@@ -834,7 +849,7 @@
 				snakeX = snake[0].x;
 				snakeY = snake[0].y;
 
-				
+
 				newHead = {
 					x: snakeX,
 					y: snakeY
